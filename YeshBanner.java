@@ -1,19 +1,19 @@
 public class YeshBanner {
+
     public static void main(String[] args) {
 
-        String[] bannerLines = new String[7];
+        String[] banner = {
+                String.join("", "*","*","*","*","*","*","*","*","*","*"),
+                String.join("", "*"," ","O","O","P","S"," ","A","P","P"," ","*"),
+                String.join("", "*"," ","B","A","N","N","E","R"," "," ","*"),
+                String.join("", "*"," ","U","C","5"," ","-"," ","J","A","V","A"," ","*"),
+                String.join("", "*"," ","A","R","R","A","Y"," ","I","N","I","T"," ","*"),
+                String.join("", "*"," ","S","T","R","I","N","G",".","J","O","I","N"," ","*"),
+                String.join("", "*","*","*","*","*","*","*","*","*","*")
+        };
 
-        bannerLines[0] = String.join("", "   *         *       ", "******", "   ***** ");
-        bannerLines[1] = String.join("", " *   *     *   *     ", "*    *", "  **     ");
-        bannerLines[2] = String.join("", "*     *   *     *    ", "*    *", " **      ");
-        bannerLines[3] = String.join("", "*     *   *     *    ", "******", "  *****  ");
-        bannerLines[4] = String.join("", "*     *   *     *    ", "*     ", "      ** ");
-        bannerLines[5] = String.join("", " *   *     *   *     ", "*     ", "       **");
-        bannerLines[6] = String.join("", "   *         *       ", "*     ", "  *****  ");
-
-        for (String line : bannerLines) {
+        for(String line : banner) {
             System.out.println(line);
-
         }
     }
 }
