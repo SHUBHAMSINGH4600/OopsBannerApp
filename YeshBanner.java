@@ -1,58 +1,40 @@
-import java.util.*;   
+import java.util.*;
 
 public class YeshBanner {
 
-    // Static Inner Class
-    static class CharacterPatternMap {
-        private char character;
-        private String[] pattern;
+    // Map to store character patterns
+    private static Map<Character, String[]> patternMap = new HashMap<>();
 
-        // Constructor
-        public CharacterPatternMap(char character, String[] pattern) {
-            this.character = character;
-            this.pattern = pattern;
-        }
+    // Function to initialize patterns
+    public static void initializePatterns() {
 
-        // Getter
-        public char getCharacter() {
-            return character;
-        }
-
-        public String[] getPattern() {
-            return pattern;
-        }
-    }
-
-    public static void main(String[] args) {
-
-        // Store patterns
-        List<CharacterPatternMap> patternList = new ArrayList<>();
-
-        patternList.add(new CharacterPatternMap('O', new String[]{
+        patternMap.put('O', new String[]{
                 " *** ",
                 "*   *",
                 "*   *",
                 "*   *",
                 " *** "
-        }));
+        });
 
-        patternList.add(new CharacterPatternMap('P', new String[]{
+        patternMap.put('P', new String[]{
                 "**** ",
                 "*   *",
                 "**** ",
                 "*    ",
                 "*    "
-        }));
+        });
 
-        patternList.add(new CharacterPatternMap('S', new String[]{
+        patternMap.put('S', new String[]{
                 " ****",
                 "*    ",
                 " *** ",
                 "    *",
                 "**** "
-        }));
+        });
+    }
 
-        String input = "OOPS";
+    // Function to render banner
+    public static void printBanner(String input) {
 
         StringBuilder[] output = new StringBuilder[5];
         for (int i = 0; i < 5; i++) {
@@ -60,12 +42,12 @@ public class YeshBanner {
         }
 
         for (char ch : input.toCharArray()) {
-            for (CharacterPatternMap cp : patternList) {
-                if (cp.getCharacter() == ch) {
-                    String[] pat = cp.getPattern();
-                    for (int i = 0; i < pat.length; i++) {
-                        output[i].append(pat[i]).append("  ");
-                    }
+
+            String[] pattern = patternMap.get(ch); // ✅ direct lookup
+
+            if (pattern != null) {
+                for (int i = 0; i < pattern.length; i++) {
+                    output[i].append(pattern[i]).append("  ");
                 }
             }
         }
@@ -73,5 +55,11 @@ public class YeshBanner {
         for (StringBuilder line : output) {
             System.out.println(line);
         }
+    }
+
+    public static void main(String[] args) {
+
+        initializePatterns();   // load map
+        printBanner("OOPS");    // print banner
     }
 }
